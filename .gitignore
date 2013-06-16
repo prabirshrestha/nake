@@ -1,56 +1,46 @@
-*.doc  diff=astextplain
-*.DOC   diff=astextplain
-*.docx  diff=astextplain
-*.DOCX  diff=astextplain
-*.dot   diff=astextplain
-*.DOT   diff=astextplain
-*.pdf   diff=astextplain
-*.PDF   diff=astextplain
-*.rtf   diff=astextplain
-*.RTF   diff=astextplain
+# Visual Studio Ignores
+[Bb]in/
+obj/
+TestResults/
 
-*.jpg   binary
-*.png   binary
-*.gif   binary
+*.sln.cache
+*.docstates
+*.suo
+*.user
+*.xap
+!*StatLight.Client.For.*.xap
 
-*.cs -text diff=csharp 
-*.vb -text
-*.c -text
-*.cpp -text
-*.cxx -text
-*.h -text
-*.hxx -text
-*.py -text
-*.rb -text
-*.java -text
-*.html -text
-*.htm -text
-*.css -text
-*.scss -text
-*.sass -text
-*.less -text
-*.js -text
-*.lisp -text
-*.clj -text
-*.sql -text
-*.php -text
-*.lua -text
-*.m -text
-*.asm -text
-*.erl -text
-*.fs -text
-*.fsx -text
-*.hs -text
+*.ncb
 
-*.csproj -text merge=union 
-*.vbproj -text merge=union 
-*.fsproj -text merge=union 
-*.dbproj -text merge=union 
-*.sln -text eol=crlf merge=union 
+# Visual Studio Extensions Ignores
+.vs10x
+*.vs10x
 
-.gitattributes -text
-*.cmd -text
-*.config -text
-*.xml -text
-Settings.StyleCop -text
-VERSION -text
+# Resharper Ignores
+_ReSharper.*/
+*.resharper.user
+
+# StyleCop cache ignores
+*StyleCop.Cache
+
+# Ignore TypeMock TestLint Cache
+lint.db
+
+# vim Ignore
+*.swp
+
+# kdiff3 Ignore
+*.orig
+
+# LATEX Ignores
+*.tex.undo
+
+# Misc Ignores
+Thumbs.db
+!libs/*/[Bb]in/
+
+#FacebookSDK ignores
+Working/
+Dist/
+packages/
+NuGet.exe
