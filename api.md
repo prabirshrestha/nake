@@ -1,5 +1,6 @@
+this has been heavily influenced by njake https://github.com/prabirshrestha/njake
+
 ```c#
-// this has been heavily influenced by njake https://github.com/prabirshrestha/njake
  
 var nake = require<Nake>;
 nake.global(); // can we make methods like desc and task global without specifying nake.desc and nake.task?
