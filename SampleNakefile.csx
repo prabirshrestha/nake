@@ -61,3 +61,5 @@ nake.ns("namespace", ()=> {
     });
 
 });
+
+nake.execute(ScriptArgs);

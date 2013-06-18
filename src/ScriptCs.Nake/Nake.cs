@@ -54,5 +54,10 @@ namespace ScriptCs.Nake
         {
         }
 
+        public int execute(string[] args)
+        {
+            return 0;
+        }
+
     }
 }
