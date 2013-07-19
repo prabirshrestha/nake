@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using ScriptCs.Contracts;
@@ -151,9 +152,9 @@ namespace ScriptCs.Nake
 
         public int execute(string[] args)
         {
-            foreach (var task in this.tasks)
+            foreach (var task in this.tasks.Where(t => !string.IsNullOrWhiteSpace(t.Value.Desc)))
             {
-                Console.WriteLine(task.Key);
+                Console.WriteLine(task.Key + "\t# " + task.Value.Desc);
             }
 
             return 0;
