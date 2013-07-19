@@ -8,7 +8,6 @@ namespace ScriptCs.Nake
     {
         private string currentNamespace;
         private string currentDesc;
-
         public Nake()
         {
             this.currentNamespace = null;
@@ -71,7 +70,19 @@ namespace ScriptCs.Nake
 
         public void ns(string ns, Action block)
         {
+            var originalNs = this.currentNamespace;
+
+            this.currentNamespace = string.IsNullOrWhiteSpace(this.currentNamespace)
+                ? ns 
+                : string.Format("{0}:{1}", this.currentNamespace, ns);
+
             this.currentDesc = null;
+
+            block();
+
+            this.currentDesc = null;
+
+            this.currentNamespace = originalNs;
         }
 
         public int execute(string[] args)
@@ -79,5 +90,11 @@ namespace ScriptCs.Nake
             return 0;
         }
 
+        private string getFullTaskName(string task)
+        {
+            return string.IsNullOrWhiteSpace(this.currentNamespace)
+                ? task
+                : string.Format("{0}:{1}", this.currentNamespace, task);
+        }
     }
 }
