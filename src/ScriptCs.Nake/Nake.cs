@@ -151,6 +151,11 @@ namespace ScriptCs.Nake
 
         public int execute(string[] args)
         {
+            foreach (var task in this.tasks)
+            {
+                Console.WriteLine(task.Key);
+            }
+
             return 0;
         }
 
