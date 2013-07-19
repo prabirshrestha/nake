@@ -55,6 +55,7 @@ nake.ns("namespace", () => {
     });
 
     nake.ns("secondlevel", ()=> {
+    	nake.desc("second level ns");
         nake.task("bar", p=> {
             Console.WriteLine("namespace:secondlevel:foo");
         });
