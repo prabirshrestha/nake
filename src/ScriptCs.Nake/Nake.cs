@@ -154,7 +154,7 @@ namespace ScriptCs.Nake
         {
             foreach (var task in this.tasks.Where(t => !string.IsNullOrWhiteSpace(t.Value.Desc)))
             {
-                Console.WriteLine(task.Key + "\t# " + task.Value.Desc);
+                Console.WriteLine("{0, -35} # {1}", task.Value.FullName, task.Value.Desc);
             }
 
             return 0;

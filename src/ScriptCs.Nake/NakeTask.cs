@@ -40,6 +40,7 @@ namespace ScriptCs.Nake
         {
             this.FullName = fullName;
             this.Deps = deps.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            this.Desc = desc;
         }
 
         public NakeTask(string fullName, string deps, Action<NakeTaskParameter> callback, string desc)
