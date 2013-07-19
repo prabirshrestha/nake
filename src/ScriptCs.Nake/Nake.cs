@@ -152,12 +152,48 @@ namespace ScriptCs.Nake
 
         public int execute(string[] args)
         {
+            var node = GenerateTaskNodes();
+            try
+            {
+                var deps = node.ResolveDependencies();
+            }
+            catch (CircularDependencyException<NakeTask> ex)
+            {
+                Console.WriteLine("Circular dependency detected between tasks `{0}` and `{1}`", ex.B.Name, ex.A.Name);
+                return -1;
+            }
+
             foreach (var task in this.tasks.Where(t => !string.IsNullOrWhiteSpace(t.Value.Desc)))
             {
                 Console.WriteLine("{0, -35} # {1}", task.Value.FullName, task.Value.Desc);
             }
 
             return 0;
+        }
+
+        private Node<NakeTask> GenerateTaskNodes()
+        {
+            var rootNode = new Node<NakeTask>("");
+            var nodes = new Dictionary<string, Node<NakeTask>>();
+            foreach (var task in tasks)
+            {
+                var node = new Node<NakeTask>(task.Value.FullName) { Data = task.Value };
+                if (!task.Value.FullName.Contains(":"))
+                {
+                    rootNode.Edges.Add(node);
+                }
+                nodes.Add(task.Value.FullName, node);
+            }
+
+            foreach (var task in tasks)
+            {
+                foreach (var dep in task.Value.Deps)
+                {
+                    nodes[task.Value.FullName].DependsOn(nodes[dep]);
+                }
+            }
+
+            return rootNode;
         }
 
         private string getFullTaskName(string task)
