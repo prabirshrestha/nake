@@ -48,18 +48,21 @@ nake.task("parameter", p => {
     // int frang2 = p.env.Frang(); // using extension methods not possible on dynamic
 });
 
-nake.ns("namespace", ()=> {
+nake.ns("namespace", () => {
 
     nake.task("foo", p => {
         Console.WriteLine("namespace:foo");
     });
 
     nake.ns("secondlevel", ()=> {
+    	nake.desc("second level ns");
         nake.task("bar", p=> {
             Console.WriteLine("namespace:secondlevel:foo");
         });
     });
 
 });
+
+nake.task("noop", p => {});
 
 nake.execute(ScriptArgs);
